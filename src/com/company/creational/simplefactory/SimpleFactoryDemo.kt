@@ -1,7 +1,5 @@
 package com.company.creational.simplefactory
 
-import java.lang.RuntimeException
-
 class Rectangle : Shape {
     override fun draw() {
         println("Drawing Rectangle")
@@ -32,7 +30,7 @@ class ShapeFactory {
                 "Circle" -> Circle()
                 "Square" -> Square()
                 "Rectangle" -> Rectangle()
-                else -> throw RuntimeException("Invalid Shape")
+                else -> throw IllegalArgumentException("Invalid Shape")
             }
         }
     }
