@@ -49,7 +49,10 @@ class HdfcAccountCreator : AccountCreator(){
 
 fun main(args: Array<String>) {
 
-    val creator = SbiAccountCreator()
-    println(creator.getAccount().getBalance())
+    // Client
+    val accountCreator = SbiAccountCreator()
+    val account = accountCreator.getAccount()
+    val balance = account.getBalance()
+    println(balance)
 
 }
