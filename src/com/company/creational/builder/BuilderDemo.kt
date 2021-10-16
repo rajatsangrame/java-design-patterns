@@ -9,7 +9,7 @@ fun main(args: Array<String>) {
     val builder = User.Builder()
             .setFirstName("Mark")
             .setLastName("Henry")
-            .setAddress(Address("Khopoli"))
+            .setAddress(Address("Mumbai"))
             .setBirthDay(LocalDate.of(1995, 9, 18))
     val user = builder.build()
     println(user.toString())
