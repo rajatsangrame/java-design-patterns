@@ -1,4 +1,4 @@
-package com.company.factorymethod
+package com.company.creational.factorymethod
 
 abstract class Account {
 

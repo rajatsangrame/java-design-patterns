@@ -1,4 +1,4 @@
-package com.company.simplefactory
+package com.company.creational.simplefactory
 
 import java.lang.RuntimeException
 
