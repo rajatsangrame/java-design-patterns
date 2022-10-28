@@ -5,9 +5,67 @@ import java.util.*;
 class Set3 {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(removeOccurrenceAndShift()));
+        top10chattyUser();
     }
 
+
+    static void top10chattyUser() {
+
+        int n = 10;
+        Map<String, Integer> map = new HashMap<>();
+        //region Dummy Data
+        map.put("John", 75);
+        map.put("Carry", 80);
+        map.put("Walter", 90);
+        map.put("Joe", 92);
+        map.put("Edward", 93);
+        map.put("Mike", 94);
+        map.put("Amir", 95);
+        map.put("Kayne", 84);
+        map.put("Shane", 96);
+        map.put("Alex", 98);
+        map.put("Danny", 100);
+        map.put("Chandler", 73);
+        map.put("Monika", 91);
+        map.put("Adam", 65);
+        map.put("Sam", 64);
+        map.put("Glen", 60);
+        map.put("Bob", 59);
+        map.put("Tim", 55);
+        map.put("Akbar", 99);
+        map.put("Ross", 97);
+        map.put("Chris", 40);
+        map.put("Smith", 35);
+        map.put("Steve", 30);
+        // endregion
+
+        PriorityQueue<User> queue = new PriorityQueue<>(n, Comparator.comparingInt(o -> o.chat));
+        for (Map.Entry<String, Integer> e : map.entrySet()) {
+            queue.add(new User(e.getKey(), e.getValue()));
+            if (queue.size() > n) queue.poll();
+        }
+        for (User u : queue) {
+            System.out.println(u);
+        }
+    }
+
+    static class User {
+        String name;
+        Integer chat;
+
+        User(String name, int chat) {
+            this.name = name;
+            this.chat = chat;
+        }
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "name='" + name + '\'' +
+                    ", chat=" + chat +
+                    '}';
+        }
+    }
 
     static int[] removeOccurrenceAndShift() {
         int[] arr = {11, 5, 7, 5, 7, 8};
