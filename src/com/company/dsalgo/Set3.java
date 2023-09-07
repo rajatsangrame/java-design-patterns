@@ -5,16 +5,49 @@ import java.util.*;
 class Set3 {
 
     public static void main(String[] args) {
-        top10chattyUser();
+
+        System.out.println(palindrome("abba", 0, 3));
     }
 
+    //region Recursion
+
+    static String findNonRepeatingElement() {
+        String[] arr = {"u", "u", "i", "i", "k", "k", "a", "a", "b", "b", "c", "c", "d", "d", "e", "e", "f", "h", "h"};
+        int left = 0;
+        int right = arr.length - 1;
+        while(left < right){
+
+
+        }
+    }
+
+    static int countMaximumPath(int n, int m) {
+        if (n == 1 || m == 1) {
+            return 1;
+        }
+        return countMaximumPath(n - 1, m) + countMaximumPath(n, m - 1);
+    }
+
+    static int josephusDeathGame(int n, int k) {
+        if (n == 1) {
+            return 0;
+        }
+        return (josephusDeathGame(n - 1, k) + k) % n;
+    }
+
+    static boolean palindrome(String str, int l, int r) {
+        if (l >= r) return true;
+        if (str.charAt(l) != str.charAt(r)) return false;
+        return palindrome(str, ++l, --r);
+    }
+    //endregion
 
     static void top10chattyUser() {
 
         int n = 10;
         Map<String, Integer> map = new HashMap<>();
         //region Dummy Data
-        map.put("John", 75);
+        map.put("John", 44);
         map.put("Carry", 80);
         map.put("Walter", 90);
         map.put("Joe", 92);
@@ -25,20 +58,21 @@ class Set3 {
         map.put("Shane", 96);
         map.put("Alex", 98);
         map.put("Danny", 100);
-        map.put("Chandler", 73);
+        map.put("Chandler", 43);
         map.put("Monika", 91);
-        map.put("Adam", 65);
-        map.put("Sam", 64);
+        map.put("Adam", 42);
+        map.put("Sam", 41);
         map.put("Glen", 60);
-        map.put("Bob", 59);
-        map.put("Tim", 55);
+        map.put("Bob", 46);
+        map.put("Tim", 45);
         map.put("Akbar", 99);
         map.put("Ross", 97);
-        map.put("Chris", 40);
-        map.put("Smith", 35);
-        map.put("Steve", 30);
+        map.put("Chris", 41);
+        map.put("Smith", 47);
+        map.put("Steve", 48);
         // endregion
 
+        //Queue<User> queue = new PriorityQueue<>((o1, o2) -> Integer.compare(o2.chat, o1.chat));
         PriorityQueue<User> queue = new PriorityQueue<>(n, Comparator.comparingInt(o -> o.chat));
         for (Map.Entry<String, Integer> e : map.entrySet()) {
             queue.add(new User(e.getKey(), e.getValue()));

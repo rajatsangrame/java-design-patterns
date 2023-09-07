@@ -44,7 +44,7 @@ public class Set1 {
 
     public static void main(String[] args) {
         int[] arr = {36, 41, 56, 35, 44, 33, 34, 92, 43, 32, 42, 45, 40, 39};
-        System.out.println(totalProfit());
+        System.out.println(maxProfit());
     }
 
     // region Answer 1
@@ -70,8 +70,9 @@ public class Set1 {
 
 
     // region Answer 2
-    static int totalProfit() {
+    static int maxProfit() {
         int[] arr = {5, 2, 7, 3, 6, 1, 2, 4, 2};
+        //int[] arr = {5, 4, 3, 8, 9};
         int profit = 0;
         int[] right = new int[arr.length];
         right[arr.length - 1] = arr[arr.length - 1];
@@ -79,9 +80,27 @@ public class Set1 {
             right[i] = Math.max(arr[i], right[i + 1]);
         }
         for (int i = 1; i < arr.length; i++) {
-            profit += right[i] - arr[i];
+            int diff = right[i] - arr[i];
+            if (diff > profit) profit = diff;
         }
 
+        return profit;
+    }
+
+    /**
+     * 1st approach is to find local minima and check if next day price is
+     * more.
+     * 
+     */
+    static int totalProfit() {
+        int[] arr = {5, 2, 7, 3, 6, 1, 2, 4, 2};
+        //int[] arr = {5, 4, 3, 8, 9};
+        int profit = 0;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i + 1] > arr[i]) {
+                profit = profit + (arr[i + 1] - arr[i]);
+            }
+        }
         return profit;
     }
     //endregion
